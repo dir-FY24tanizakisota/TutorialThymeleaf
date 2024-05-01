@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class NowController {
-    
-    @GetMapping("now")
+
+    @GetMapping("/now")
     public String getNow(Model model) {
-        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        model.addAttribute("msg", "現在時刻:" + now);
-        
+        // 現在時刻を文字列として取得
+        String now = LocalDateTime.now().format( DateTimeFormatter.ofPattern("HH:mm:ss") );
+        // 文字列をModelに登録
+        model.addAttribute("msg", "現在時刻：" + now);
+        // now.htmlに画面遷移
         return "now";
     }
-
 }
